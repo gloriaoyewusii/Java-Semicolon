@@ -12,7 +12,7 @@ public class LargestSmallestNumbers{
 		int userInput;
 
 		do {
-			System.out.print("Enter a number ::> ");
+			System.out.print("Enter a number: ");
 			number = input.nextInt();
 
 			if (number > largest){
@@ -24,7 +24,7 @@ public class LargestSmallestNumbers{
 				smallest = number;
 			}
 
-			System.out.print("Enter 0 if you want to stop ::> ");
+			System.out.print("Enter 0 if you want to stop: ");
 			userInput = input.nextInt();
 
 		} while (userInput != 0);
