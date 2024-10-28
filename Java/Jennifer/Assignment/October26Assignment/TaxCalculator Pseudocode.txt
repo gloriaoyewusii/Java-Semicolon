@@ -1,0 +1,29 @@
+Top-down pseudocode: Determine the total tax for each of three citizens
+
+Step-by-step refined process: Initialise variables
+Input names of three citizens
+Input earnings of three citizens
+Use 15% tax rate for earnings less than or equal to 30,000 usd to determine tax
+Use 20% tax rate for earnings greater than 30,000 usd to determine tax
+Determine total tax
+Display citizens' total tax.
+
+Stage 2
+Before the loop is created
+Set variable total to 0; the taxes calculated will be added to total in the body of the loop.
+Set counter to 1 because we have a definite number of users which is three. When the counter exceeds three, the loop terminates.
+
+In the body of the loop
+Initialise variable name to be inputed by the citizens.
+Collect name of citizen.
+Initialise variable earnings to be inputed by the citizens.
+Collect earnings of the named citizen.
+Repeat/loop collection two more times.
+
+If earnings is less than or equal to 30,000 USD, determine tax using 15% tax rate. 
+Tax amount = (Earnings * Tax rate)
+Add tax determined to total.
+If earnings is greater than 30,000 USD determine tax using 20% tax rate.
+Tax amount = (Earnings * Tax rate)
+Add tax determined to total.
+Display total

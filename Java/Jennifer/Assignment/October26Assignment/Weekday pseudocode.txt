@@ -1,0 +1,14 @@
+Pseudocode for weekday
+
+Display the name of a weekday 
+User should enter a number between 1 and 7
+If number is 2
+Display Monday 
+Else if number is 3
+Display Tuesday 
+Else if number is 4
+Display Wednesday 
+Else if number is 5
+Display Thursday 
+Else 
+Display Friday

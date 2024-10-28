@@ -1,0 +1,21 @@
+Top down: Find the sum of the first 10 natural numbers.
+
+Stage 1: 
+initialize variables
+sum numbers
+
+Stage 2
+set total to 0
+set first natural number to 0
+set next naturalNumbers to be inputted by the user
+set counter to 1
+
+while counter less than or equal to 10
+add naturalNumbers to total
+add 1 to counter
+
+if naturalNumber is greater than 0 and less than or equal to 10,
+print total
+if naturalNumber is less than 0 or greater than 10,
+print Number is not a natural number.
+ 
