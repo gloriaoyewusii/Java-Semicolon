@@ -1,0 +1,16 @@
+Pseudocode for leap year
+
+
+1. Receive input of a year from the user.
+2. If year % 4 = 0
+3. Print year is a leap year 
+3. Else if year % 4 != 0
+4. Print year is not a leap year.
+
+Pseudocode for random numbers
+
+1. Generate a random number.
+2. Ask user to guess the random number.
+3. If user's guess is high, print too high, try again.
+4. If low, print too low, try again.
+5. Repeat till user guesses correctly.
