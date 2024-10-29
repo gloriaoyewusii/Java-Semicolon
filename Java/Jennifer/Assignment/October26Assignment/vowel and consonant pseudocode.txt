@@ -1,0 +1,5 @@
+Enter a single character from the alphabet.
+Print vowel or consonant depending on user input.
+If the inputs by user is a or input is e or input is I or input is o or input is u, print .
+If user input is not as above, print input is a consonant 
+Else print input is a vowel
