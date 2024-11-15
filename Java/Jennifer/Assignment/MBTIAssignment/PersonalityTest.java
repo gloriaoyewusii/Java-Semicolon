@@ -398,23 +398,106 @@ public class PersonalityTest{
 	System.out.println("Number of selected perceptive traits are: "+perceptiveCounter);
 
 
-	if (extraCounter > introCounter)
-		System.out.print("E");
-	else if (introCounter > extraCounter)
-		System.out.print("I");
-	if (sensingCounter > intuitiveCounter)
-		System.out.print("S");
-	else if (intuitiveCounter > sensingCounter)
-		System.out.print("N");
-	if (thinkingCounter > feelingCounter)
-		System.out.print("T");
-	else if (feelingCounter > thinkingCounter)
-		System.out.print("F");
-	if (judgingCounter > perceptiveCounter)
-		System.out.print("J");
-	else if(perceptiveCounter > judgingCounter)
-		System.out.print("P");
 	
+	String personalityType = "";
 
+	if (introCounter > extraCounter && intuitiveCounter > sensingCounter && thinkingCounter > feelingCounter && judgingCounter > perceptiveCounter) {
+	personalityType = "INTJ";
+	System.out.println(personalityType);
+	System.out.println("\n(I)Introverted (N)Intuitive (T) Thinking (J)Judging");
+	System.out.println("THE ARCHITECT\nHaving the INTJ personality type shows that you are a curious individual, inquisitive for more and more knowledge. As an individual with an INTJ personality type also proves that you prioritise creativity and are limitless in your creative depths. Additionally, you would notice you value consistent growth and progress in your patterns of thinking. INTJs tend to structure their activities, and want to take on their plans independently without depending on other people's expectations or ideas\nOn the other hand, INTJs can become blinded to other people's reasons or inputs, thus displaying arrogance.");
+	}	
+	if (introCounter > extraCounter && intuitiveCounter > sensingCounter && thinkingCounter > feelingCounter && perceptiveCounter > judgingCounter) {
+	personalityType = "INTP";
+	System.out.println(personalityType);
+	System.out.println("\n(I)Introverted (N)Intuitive (T) Thinking (P)Perceptive");
+	System.out.println("THE LOGICIAN\nYou focus your attention on your inner world and you're largely introspective. As such INTPs have a small social circle. Despite the breadth of your social circle as an INTP, you tend to keep a select group  of poeple close to you. As the name implies, you are introverted, intuitive, thinking and perceiving.You are largely logical and weigh things from an objective perspective. A major strength of being an INTP is your independence, loyalty and affection for those you choose to be in your circle. On the other hand, major weaknesses of the INTP personality trait is being difficult to get to know, in addition to having trouble showing expressions of your  feelings.");	
+	}
+	if (extraCounter > introCounter && intuitiveCounter > sensingCounter && thinkingCounter > feelingCounter && judgingCounter > perceptiveCounter) {
+	personalityType = "ENTJ";
+	System.out.println(personalityType);
+	System.out.println("\n(E)Extraverted (N)Intuitive (T) Thinking (J)Judging");
+	System.out.println("THE COMMANDER\nAn ENTJ personality trait is reflective of your person as being extraverted, intuitive, thinking and judging. This trait suggests that you are not just capable of being decisive, but also love momentum and accomplishment. You act on your plans when you decide, so you do not take long or hesitate to take on the right strides towards your goals, visions and accomplishments. You struggle with being patient sometimes and can be stubborn if care is not taken. More strengths allude to you being focused on the future, great at planning and with people. However, weak points as an ENTJ suggests you have trouble focusing on details, trouble paying attention to other people's emotions and are quite prone to hiding your emotions and sentiments.");
+	}
+	if (extraCounter > introCounter && intuitiveCounter > sensingCounter && thinkingCounter > feelingCounter && perceptiveCounter > judgingCounter) {
+	personalityType = "ENTP";
+	System.out.println(personalityType);
+	System.out.println("\n(E)Extraverted (N)Intuitive (T) Thinking (P)Perceptive");
+	System.out.println("THE DEBATER\nAn ENTP personality trait is reflective of your person as being extraverted, intuitive, thinking and perceptive. This trait suggests that you are audacious, and are not afraid to disagree with people or over anything. You are verbally at ease with constructing solid arguments against opponents and even personal views that expand your views or horizon about yourself. Your idea of fun lies more towards controversies and as such, you have within you an immense desire to break rules, test boundaries and disconform to norms and social standards. While this can be beneficial on several occasions, contrarianviews and perspectives are not deemed of essence in every situation. Therefore, a major weakness of the ENTP trait is that you tend to struggle to keep, nurture and grow deeper friendships and relationships, or even achieve your professional goals. Nevertheless, more strengths allude to you being a quick thinker, original, an excellent brainstormer and knowledgeable.");
+	}
+	if (introCounter > extraCounter  && intuitiveCounter > sensingCounter && feelingCounter > thinkingCounter  && judgingCounter > perceptiveCounter) {
+	personalityType = "INFJ";
+	System.out.println(personalityType);
+	System.out.println("\n(I)Introverted (N)Intuitive (F) Feeling (J)Judging");
+	System.out.println("THE ADVOCATE\nAn INFJ personality trait tends to approach life with deep thoughtfulness and imagination. Your inner vision, personal values, and a quiet, principled version of humanism reflects your compassionate self and how natural of helper you are. In additon, you're high on being organised as well as idealism. You do not just dream away your ideals, you put in the work to make it come to fruition.");	
+	}
+	if (introCounter > extraCounter  && intuitiveCounter > sensingCounter && feelingCounter > thinkingCounter  && perceptiveCounter > judgingCounter) {
+	personalityType = "Trait is: INFP";
+	System.out.println(personalityType);
+	System.out.println("\n(I)Introverted (N)Intuitive (F) Feeling (P)Perceptive");
+	System.out.println("THE MEDIATOR\nAn INFP personality trait tends to approach life from a quiet and imaginative perspective whilst also being open to new experiences. What sets you apart is your compassionate and creative pattern to the things you do. In additon, you long for meaningful relationships where you connect on a deeper level with people. The thirst for connection is what makes you empathic, which is one of your greatest qualities as an INFP.");	
+	}
+	if (extraCounter > introCounter && intuitiveCounter > sensingCounter && feelingCounter > thinkingCounter  && judgingCounter > perceptiveCounter) {
+	personalityType = "ENFJ";
+	System.out.println(personalityType);
+	System.out.println("\n(E)Extraverted (N)Intuitive (F) Feeling (J)Judging");
+	System.out.println("THE PROTAGONIST\nIf you feel called to a higher purpose in life, and rarely step back from opportunities to do the right thing, despite limiting surrounding factors, then the ENFJ trait is reflective of your personality.");
+	}
+	if (extraCounter > introCounter  && intuitiveCounter > sensingCounter && feelingCounter > thinkingCounter  && perceptiveCounter > judgingCounter) {
+	personalityType = "ENFP";
+	System.out.println(personalityType);
+	System.out.println("\n(E)Extraverted (N)Intuitive (F) Feeling (P)Perceptive");
+	System.out.println("THE CAMPAIGNER\nIf you feel called to a higher purpose in life, and rarely step back from opportunities to do the right thing, despite limiting surrounding factors, then the ENFJ trait is reflective of your personality.");
+	}
+	if (extraCounter > introCounter  && sensingCounter > intuitiveCounter && feelingCounter > thinkingCounter  && judgingCounter > perceptiveCounter) {
+	personalityType = "ESFJ";
+	System.out.println(personalityType);
+	System.out.println("\n(E)Extraverted (S)Sensing (F) Feeling (J)Judging");
+	System.out.println("THE CONSUL\nAs an ESFJ, you are dutiful and go out of your way to provide assistance to people around you. Therefore, your core strengths are your zeal for showing care and compassion to others.");
+	}
+	if (extraCounter > introCounter  && sensingCounter > intuitiveCounter && thinkingCounter > feelingCounter && judgingCounter > perceptiveCounter) {
+	personalityType = "ESTJ";
+	System.out.println(personalityType);
+	System.out.println("\n(E)Extraverted (S)Sensing (T) Thinking (J)Judging");
+	System.out.println("THE EXECUTIVE\nAs an ESTJ, You are an embodiment of someone with a drive for excellence and efficiency. You are organised and manage your self expertly with results to show for it. ");
+	}
+	if (introCounter > extraCounter  && sensingCounter > intuitiveCounter && feelingCounter > thinkingCounter && perceptiveCounter > judgingCounter) {
+	personalityType = "ISFP";
+	System.out.println(personalityType);
+	System.out.println("\n(I)Introverted (S)Sensing (F) Feeling (P)Perceptive");
+	System.out.println("THE ADVENTURER\nAs an ISFP, You embody the creative aspects of you. You show yourself to the world through your creative lenses. You are therefore an epitome of creativity.");
+	}
+	if (introCounter > extraCounter  && sensingCounter > intuitiveCounter && thinkingCounter > feelingCounter && perceptiveCounter > judgingCounter) {
+	personalityType = "ISTP";
+	System.out.println(personalityType);
+	System.out.println("\n(I)Introverted (S)Sensing (T) Thiniking (P)Perceptive");
+	System.out.println("THE VIRTUOSO\nAs an ISTP, You are an individualist. You typically are independent and go through life's processes as a goal oriented person without the influence of external forces.");
+	}
+	if (introCounter > extraCounter  && sensingCounter > intuitiveCounter && feelingCounter > thinkingCounter && judgingCounter > perceptiveCounter) {
+	personalityType = "ISFJ";
+	System.out.println(personalityType);
+	System.out.println("\n(I)Introverted (S)Sensing (F) Feeling (J)Judging");
+	System.out.println("THE DEFENDER\nAs an ISFJ, You are largely responsible and dutiful. In additon, you spread warmth every where you go.");
+	}
+	if (introCounter > extraCounter  && sensingCounter > intuitiveCounter && thinkingCounter > feelingCounter && judgingCounter > perceptiveCounter) {
+	personalityType = "ISTJ";
+	System.out.println(personalityType);
+	System.out.println("\n(I)Introverted (S)Sensing (T) Thinking (J)Judging");
+	System.out.println("THE LOGISTICIAN\nAs an ISTJ, You have a logical approach to life and are very composed in your behaviour.");
+	}
+	if (extraCounter > introCounter  && sensingCounter > intuitiveCounter && feelingCounter > thinkingCounter && perceptiveCounter > judgingCounter) {
+	personalityType = "ESFP";
+	System.out.println(personalityType);
+	System.out.println("\n(E)Extroverted (S)Sensing (F) Feeling (P)Perceptive");
+	System.out.println("THE ENTREPRENEUR\nAs an ESFP, you love vibrant experiences and enhoy engaging with others.");
+	}
+	if (extraCounter > introCounter  && sensingCounter > intuitiveCounter && thinkingCounter > feelingCounter && perceptiveCounter > judgingCounter) {
+	personalityType = "ESTP";
+	System.out.println(personalityType);
+	System.out.println("\n(E)Extroverted (S)Sensing (T) Thinking (P)Perceptive");
+	System.out.println("THE ENTERTAINER\nAs an ESTP, you re socially responsible, and are thoughtful in a very deep manner.");
+	}
+
+	
 	}
 }
