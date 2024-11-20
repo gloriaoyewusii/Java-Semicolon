@@ -1,0 +1,77 @@
+pseudocodes
+
+1. find the maximum of four numbers using logical operators
+
+collect and store four numbers as number1, number2, number3, number4.
+using the logical && operator, if number1 is greater than all the other numbers, then it is the maximum number.
+if number2 is greater than the remaining numbers, it is the maximum number.
+if number3 is greater than the remaining numbers, it is the maximum number.
+if number4 is greater than the remaining numbers, it is the maximum number.
+Display the maximum number.
+
+
+2. Write a Java program to find the grade of a student based on their marks and attendance.
+
+Create two variables for attendance marks and store as attendanceMarks
+create another variable for student marks and store as studentMarks
+create a variable for total score of students and store as totalScore
+sum up attendance marks and student marks using: attendanceMarks + studentMarks
+calculate the sum and display as totalScore
+Create a variable for grade called studentGrade
+
+if studentGrade is 0 - 39, student grade is F
+if studentGrade is 40 - 49 student grade is E
+if studentGrade is 50 - 59, student grade is D
+if studentGrade is 60 - 69, student grade is C
+if studentGrade is 70 - 79, student grade is B
+if studentGrade is 80 - 89, student grade is A
+if studentGrade is 90 - 100, student grade is A+
+Display the grade of the student as studentGrade.
+
+3. 
+Write a program that utilizes a while loop to print the squares of numbers from 1 to 5.
+
+create a variable named number and initialize to 1.
+using the while loop, constrain number to less than or equal to 5.
+calculate the square of numbers using: square = number * number.
+Display square.
+
+
+4. Write an application that uses a for loop in
+it’s normal structure and in the structure
+similar to while loops.
+
+create and initialize a variable named as number to 1.
+create another variable and store as square.
+using the for loop, constrain number to less than or equal to 5.
+calculate the square of numbers using: square = number * number.
+Display square.
+
+
+
+For the while loop.
+create a variable named number and initialize to 1.
+using the while loop, constrain number to less than or equal to 5.
+calculate the square of numbers using: square = number * number.
+Display square.
+
+
+5.initialise a variable named number to 1.
+iniitialise another variable named square to 0;
+calculate square using: number * number
+calculate cube using square * number
+display number
+display square
+display cube
+
+
+
+using a for loop, create a counter variable and initialize to 1.
+create a range or loop continuation condition where counter is less than 10
+increment counter by adding 3 to its value.
+using another for loop, create another variable named number and initialize to counter
+create a range or loop continuation condition where number is less than counter plus 2.
+increment by adding 1 to its value.
+print a line to add space
+Display number
+
