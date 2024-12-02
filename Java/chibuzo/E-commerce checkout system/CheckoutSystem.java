@@ -1,122 +1,131 @@
 import java.util.Scanner;
+import java.util.ArrayList;
+
 public class CheckoutSystem{
-
-	public static void main(String[] gloria){
-		
-		String[][] products = {{"Face cleanser", "Sunscreen", "Antiperspirant"}, {"4000", "4000", "3000"}};
-		//display(products);
-		view(products);
-	}
+	public static void main(String[] args){
 	Scanner input = new Scanner(System.in);
-	
-	public static String[][] display(String[][] products){
-		for (int index = 0; index <= products.length; index++){
-			System.out.print(products[0][index]+" - "+products[1][index]);
-			System.out.println(); 
-		}
-		return products;
-	}
-	
-	public static int descriptionOf(int select){
-		Scanner input = new Scanner(System.in);
-		
-		System.out.print("To know more about your desired product, press\n1. Face cleanser\n2. Sunscreen\n3. Anti-perspirant\n");
-		select = input.nextInt();
-		switch (select){
-			case 1: System.out.print("The Semicolon Face cleanser is the perfect choice for you because it contains a blend of natural and specially sourced ingredients expedient for a perfect and healthy face.");
-			break;
-			case 2: System.out.print("The Semicolon sunscreen is the perfect choice for you because it serves to heal the effects of the harsh weather conditions on your skin thereby leaving it moist and healthy for any weather.");
-			break;
-			case 3: System.out.print("The Semicolon anti-perspirant is the perfect choice for you because it leaves you refreshened through out the day and more.");
-			break;
-		
 
-		}
-		return select;
-	}
+	ArrayList<String> products = new ArrayList<>();
+	ArrayList<Integer> numberOfItems = new ArrayList<>();
+	ArrayList<Double> priceOfItems = new ArrayList<>();
 	
-	public static int getFaceCleanserDecision(int buyFaceCleanser){
-		Scanner input = new Scanner(System.in);
+	System.out.print("What is the customer's name? -  ");
+	String customersName = input.nextLine();
+	
+	displayQuestions(customersName, input, products, numberOfItems, priceOfItems);
 
-		int faceCleanserQuantity = 0;
-		while (buyFaceCleanser == 1){
-			
-			System.out.print("Do you want to buy the Semicolon Face cleanser product?\n1. Yes\n2. No\n");
-			buyFaceCleanser = input.nextInt();
-			if (buyFaceCleanser == 1){
-				faceCleanserQuantity += 1;
-			
-			} else if (buyFaceCleanser != 1)
-				System.out.println("Thank you for shopping with us. Hope you liked it here! Kindly check our other products.");
-			
-			
+	}
+
+	public static void displaySystemQuestions(String customersName, Scanner input, ArrayList<String> products, ArrayList<Integer> numberOfItems, ArrayList<Double> priceOfItems ){
+		System.out.print("What did the user buy? - ");
+		String productsBought = input.nextLine();
+		products.add(productsBought);
+
+		System.out.print("How many pieces? - ");
+		int productQuantity = input.nextInt();
+		numberOfItems.add(productQuantity);
+
+		System.out.print("How much per unit? - "); 
+		double productPrice  = input.nextDouble();
+		priceOfItems.add(productPrice);
+
+		input.nextLine();
+		System.out.print("Do you want to add more items? - ");
+		String addMoreItems = input.nextLine();
+
+		if(addMoreItems.equalsIgnoreCase("Yes")){
+			displaySystemQuestions(customersName, input, products, numberOfItems, priceOfItems);
 		}
-		System.out.println();	
-		System.out.println("You have added "+faceCleanserQuantity+" of this item to your cart");
-		System.out.println();	
-	
-		return faceCleanserQuantity;
+		else {
+			System.out.print("What is your name? - ");
+			String nameOfCashier = input.nextLine();
+		
+			System.out.print("How much discount will the customer get? - ");
+			double discount = input.nextDouble();
+			
+			displayPromptToPay(customersName, nameOfCashier, input, products, numberOfItems, priceOfItems, discount);
+		}
+
 	}
 		
-	public static int getSunscreenDecision(int buySunscreen){
-		Scanner input = new Scanner(System.in);
+	public static void displayPromptToPay(String customersName, String nameOfCashier, Scanner input, ArrayList<String> products, ArrayList<Integer> numberOfItems, ArrayList<Double> priceOfItems, double discount) {
+		System.out.print("""
+SEMICOLON STORES
+MAIN BRANCH
+LOCATION: 312 HERBERT MACAULAY WAY, SABO YABA, LAGOS.
+DATE: 18TH-DEC-22 7:25pm
+""");
+			System.out.println("Cashier: "+nameOfCashier+"\n");
+			System.out.println("Customer's name: "+customersName+"\n");
+			System.out.println("=================================================");
+			System.out.println("ITEM\tQTY\tPRICE\tTOTAL(NGN)");
+			System.out.println("-------------------------------------------------");
 
-		int sunScreenQuantity = 0;
-		while (buySunscreen == 1){
-			
-			System.out.print("Do you want to buy the Semicolon Sunscreen product?\n1. Yes\n2. No\n");
-			buySunscreen = input.nextInt();
-			if (buySunscreen == 1){
-				sunScreenQuantity += 1;
-			
-			} else if (buySunscreen != 1)
-				System.out.println("Thank you for shopping with us. Hope you liked it here! Kindly check our other products.");
-			
-			
-		}	
-		System.out.println();
-		System.out.println("You have added "+sunScreenQuantity+" of this item to your cart");
-		System.out.println();	
-	
-		return sunScreenQuantity;
+			double billTotal = 0;
+			double VAT = 17.50;
+			double subTotal = 0;
+			for (int index = 0; index < products.size(); index++) {
+				System.out.printf("%s\t%d\t%.2f\t%.2f%n", products.get(index), numberOfItems.get(index), priceOfItems.get(index), (numberOfItems.get(index) * priceOfItems.get(index)));
+				subTotal += (numberOfItems.get(index) * priceOfItems.get(index));
+				
+			}
+			discount = (subTotal * (discount/100));
+			VAT = (subTotal * (VAT/100));
+			billTotal = (subTotal - discount + VAT);
+			System.out.println("-------------------------------------------------");
 
-	}
+			System.out.printf("\tSub Total:\t%.2f%n\tDiscount:\t%.2f%n\tVAT:\t\t%.2f\n", subTotal, discount, VAT);
+			System.out.println("=================================================");
+			System.out.printf("\tBill Total:\t%.2f%n", billTotal);
+			System.out.println("=================================================");
+			System.out.println("\n\tTHIS IS NOT A RECEIPT. KINDLY PAY "+billTotal);
+			System.out.println("=================================================");
 
-	
-	public static int geAntiPerspirantDecision(int buyAntiPerspirant){
-		Scanner input = new Scanner(System.in);
+			System.out.print("How much did the customer give to you? - ");
+			double amountPaid = input.nextDouble();
 
-		int antiPerspirantQuantity = 0;
-		while (buyAntiPerspirant == 1){
-			
-			System.out.print("Do you want to buy the Semicolon Anti-Perspirant product?\n1. Yes\n2. No\n");
-			buyAntiPerspirant = input.nextInt();
-			if (buyAntiPerspirant == 1){
-				antiPerspirantQuantity += 1;
-			
-			} else if (buyAntiPerspirant != 1)
-				System.out.println("Thank you for shopping with us. Hope you liked it here! Kindly check our other products.");
-			
-			
-		}
-		System.out.println();	
-		System.out.println("You have added "+antiPerspirantQuantity+" of this item to your cart");
-	
-		return antiPerspirantQuantity;
+			displayInvoice(customersName, nameOfCashier, input, products, numberOfItems, priceOfItems, discount, amountPaid);
 
 	}
 
-	public static String[][] view(String[][] cart){
-	
-		getFaceCleanserDecision(1);
-		getSunscreenDecision(1);
-		geAntiPerspirantDecision(1);
-
-		for (int index = 0; index < cart.length; index++){
+	public static void displayInvoice(String customersName, String nameOfCashier, Scanner input, ArrayList<String> products, ArrayList<Integer> numberOfItems, ArrayList<Double> priceOfItems, double discount, double amountPaid) {
+		System.out.print("""
+SEMICOLON STORES
+MAIN BRANCH
+LOCATION: 312 HERBERT MACAULAY WAY, SABO YABA, LAGOS.
+DATE: 18TH-DEC-22 7:25pm
+""");
+			System.out.println("Cashier: "+nameOfCashier+"\n");
+			System.out.println("Customer's name: "+customersName+"\n");
+			System.out.println("=================================================");
+			System.out.println("ITEM\tQTY\tPRICE\tTOTAL(NGN)");
+			System.out.println("-------------------------------------------------");
 			
-		}
-		return cart;
-	}
+			double billTotal = 0;
+			double VAT = 17.50;
+			double subTotal = 0;
+			for (int index = 0; index < products.size(); index++) {
+				System.out.printf("%s\t%d\t%.2f\t%.2f%n", products.get(index), numberOfItems.get(index), priceOfItems.get(index), (numberOfItems.get(index) * priceOfItems.get(index)));
+				subTotal += (numberOfItems.get(index) * priceOfItems.get(index));
+				
+			}
+			discount = (subTotal * (discount/100));
+			VAT = (subTotal * (VAT/100));
+			billTotal = (subTotal - discount + VAT);
+			double balance = amountPaid - billTotal;
+			System.out.println("-------------------------------------------------");
 
+			System.out.printf("\tSub Total:\t%.2f%n\tDiscount:\t%.2f%n\tVAT:\t\t%.2f\n", subTotal, discount, VAT);
+			System.out.println("=================================================");
+			System.out.printf("\tBill Total:\t%.2f%n\tBalance:\t%.2f%n", billTotal, balance);
+			System.out.println("=================================================");
+			System.out.println("\n\tTHANK YOU FOR YOUR PATRONAGE");
+			System.out.println("=================================================");
+			
+
+
+
+		
+	}
 
 }
