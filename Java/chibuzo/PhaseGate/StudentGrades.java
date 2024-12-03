@@ -2,23 +2,44 @@ import java.util.Arrays;
 import java.util.Scanner;
 public class StudentGrades{
 
+	static int numberOfStudents;
+	static int numberOfSubjects;
+
 	public static void main(String[] gloria){
+		
+		getNumberOfStudents();
+		getNumberOfSubjects();
 		getStudents();
 		getScores();
 
 	}
 
 
-	public static String[] getStudents(){
+	public static int getNumberOfStudents(){
 		Scanner input = new Scanner(System.in);
 		
 		System.out.println("How many students do you have?\n");
 
-		int numberOfStudents = input.nextInt();	
+		numberOfStudents = input.nextInt();	
 
-		String[] studentsArray = new String[numberOfStudents];
+		return numberOfStudents;
+	}
+
+	public static int getNumberOfSubjects(){
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("How many subjects do they offer?\n");
+
+		int numberOfSubjects = input.nextInt();	
+		
+		return numberOfSubjects;
+	}
 	
-		for (int index = 0; index < numberOfStudents; index++){
+	public static String[] getStudents(){
+		Scanner input = new Scanner(System.in);
+		String[] studentsArray = new String[numberOfStudents];
+
+		for (int index = 0; index < studentsArray.length; index++){
 			
 			System.out.println("What is the name of the student?\n");
 
@@ -26,53 +47,53 @@ public class StudentGrades{
 			
 			studentsArray[index] = student_name;
 
+		
+		}
+		
 		System.out.println(Arrays.toString(studentsArray));
 
-		}
-		
-		
 
 		return studentsArray;	
-	}
+	}	
 
-	public static int getScores(){
-		Scanner input = new Scanner(System.in);
+	public static int[] getScores(){
 		
-		System.out.println("How many subjects do they offer?\n");
+		
+		Scanner input = new Scanner(System.in);
 
-		int numberOfSubjects = input.nextInt();	
-
-		int[] scoresArray = new int[numberOfSubjects];
+		System.out.println("Enter number of students: ");
 	
-		for (int index = 0; index < numberOfSubjects; index++){
+		numberOfStudents = input.nextInt();
+
+		System.out.print("Enter number of subjects: ");
+
+		numberOfSubjects = input.nextInt();
+
+		int length = numberOfStudents * numberOfSubjects;
+		
+		int[] scoresArray = new int[length];
+
+		for (int index = 0; index < length; index++){
 			int count = index + 1;
-	
-			System.out.println("Entering scores for student "+count+"\n");
 			
-			System.out.println("Enter score for subject"+count+"\n");
+			System.out.print("Enter score "+count+"\n");
+			
+			int student_score = input.nextInt();
 
-			int studentScore = input.nextInt();
-
-			scoresArray[index] = studentScore;
-
-			System.out.println("Saving >>>>>>>>>>>>>>>>>>>>>>>\n");
-
-			System.out.println("Saved successfully");
-
-		System.out.println(Arrays.toString(scoresArray));
-
-
+			scoresArray[index] = student_score;
+			
 
 	
 
 
+			
 
 		}
-	
-				
-		getStudents();
+
+		System.out.println(Arrays.toString(scoresArray));	
 		
-		return numberOfSubjects;	
+		return scoresArray;
 	}
+	
 	
 }
