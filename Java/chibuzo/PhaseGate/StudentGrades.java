@@ -43,9 +43,9 @@ public class StudentGrades{
 			
 			System.out.println("What is the name of the student?\n");
 
-			String student_name = input.nextLine();
+			String studentName = input.nextLine();
 			
-			studentsArray[index] = student_name;
+			studentsArray[index] = studentName;
 
 		
 		}
@@ -56,8 +56,11 @@ public class StudentGrades{
 		return studentsArray;	
 	}	
 
-	public static int[] getScores(){
-		
+	
+	
+
+
+public static int[] getScores(){
 		
 		Scanner input = new Scanner(System.in);
 
@@ -80,20 +83,16 @@ public class StudentGrades{
 			
 			int student_score = input.nextInt();
 
-			scoresArray[index] = student_score;
-			
-
-	
-
-
-			
+			scoresArray[index] = student_score;	
 
 		}
 
-		System.out.println(Arrays.toString(scoresArray));	
-		
+		System.out.print(Arrays.toString(scoresArray));
+			
+			
 		return scoresArray;
-	}
-	
+
+
+	}	
 	
 }
