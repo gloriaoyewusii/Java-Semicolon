@@ -20,32 +20,28 @@ public class StudentGrades{
 
 		int numberOfSubjects = input.nextInt();	
 
-		
+		String[] studentsArray = new String[numberOfStudents];
 		int[][] scoresArray = new int[studentsArray.length][numberOfSubjects];
 		
-		
-		for (int index = 0; index < studentsArray.length; index++){
-			for (int index2 = 0; index < numberOfSubjects; index++){
-				String[] studentsArray = new String[numberOfStudents];
-				System.out.println("What is the name of the student? \n");
-
+		int studentCount = 1;
+		for (int index = 1; index <= studentsArray.length; index++){
+			for (int secondIndex = 1; secondIndex <= numberOfSubjects; secondIndex++){
+				
+				System.out.println("Entering scores for student "+index);
+				
 				String studentName = input.nextLine();
-			
-				studentsArray[index] = studentName;
-
-				System.out.println("Entering scores for student"+studentName+"\n");
-			
-				System.out.println("Enter score for subject "+studentName+"\n");
+				
+				System.out.println("Enter score for subject "+secondIndex);
 
 				int studentScore = input.nextInt();
 			
-				scoresArray[index][index2] = studentScore;
+				scoresArray[index-1][secondIndex-1] = studentScore;
 
 				System.out.println("Saving >>>>>>>>>>>>>>>>>>>>>>>\n");
 				System.out.println("Saved successfully");
-			System.out.print(scoresArray[index][index2]);
 
 			}
+		System.out.print(Arrays.toString(scoresArray));
 			
 		}
 		
