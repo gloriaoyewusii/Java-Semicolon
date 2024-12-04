@@ -15,18 +15,14 @@ public class StudentGrades{
 		scoresArray = getScores(numberOfStudents, numberOfSubjects, scoresArray, input);	
 		int[] total = getTotal(scoresArray, numberOfStudents, numberOfSubjects);
 		int[] average = getAverage(total, numberOfStudents, numberOfSubjects);
-		printTableHeader(numberOfStudents, numberOfSubjects);
+		printTable(scoresArray, total, average, numberOfStudents, numberOfSubjects);
 		
 
 	}
 	public static int[][] getScores(int numberOfStudents,  int numberOfSubjects, int[][] scoresArray, Scanner input){
-		
-		//studentsArray = new String[numberOfStudents];
 		scoresArray = new int[numberOfStudents][numberOfSubjects];
-
-		
-		int[] total = new int[numberOfStudents];
-		int[] average = new int[numberOfStudents];
+		//int[] total = new int[numberOfStudents];
+		//int[] average = new int[numberOfStudents];
 		
 		for (int index = 1; index <= numberOfStudents; index++){
 			for (int secondIndex = 1; secondIndex <= numberOfSubjects; secondIndex++){
@@ -78,7 +74,7 @@ public class StudentGrades{
 		return average;
 	}
 
-	public static void printTableHeader(int numberOfStudents, int numberOfSubjects){
+	public static void printTable(int[][] scoresArray, int[] total, int[] average, int numberOfStudents, int numberOfSubjects){
 		System.out.print("=====================================================================================\n");
 		System.out.print("STUDENT\t");
 		for (int secondIndex = 0; secondIndex < numberOfSubjects; secondIndex++){
@@ -89,16 +85,19 @@ public class StudentGrades{
 		System.out.print("=====================================================================================\n");
 
 		for (int index = 0; index < numberOfStudents; index++){
-			System.out.print("Student " + (index+1) +"\n");
+			System.out.print("Student " + (index+1)+" ");
+			for (int secondIndex = 0; secondIndex < numberOfSubjects; secondIndex++){
+				System.out.print(scoresArray[index][secondIndex]+"\t");
+			}
+			System.out.print(total[index] + "\t" + average[index]);
 			System.out.println();
+			
 		}
+		
+		
 
 	}
 
-	public static void printTable(int[][] scoresArray, int[] total, int[] average, int numberOfStudents, int numberOfSubjects){
-		
-
-	}				
 	
 	
 }
