@@ -15,7 +15,11 @@ public class StudentGrades{
 		scoresArray = getScores(numberOfStudents, numberOfSubjects, scoresArray, input);	
 		int[] total = getTotal(scoresArray, numberOfStudents, numberOfSubjects);
 		int[] average = getAverage(total, numberOfStudents, numberOfSubjects);
-		printTable(scoresArray, total, average, numberOfStudents, numberOfSubjects);
+		int[] positions = getPosition(total, numberOfStudents, numberOfSubjects);
+		int highest =  getHighestScorer(scoresArray, numberOfStudents, numberOfSubjects);
+		int lowest =  getHighestScorer(scoresArray, numberOfStudents, numberOfSubjects);
+
+		printTable(scoresArray, total, average, numberOfStudents, numberOfSubjects, positions);
 		
 
 	}
@@ -74,7 +78,25 @@ public class StudentGrades{
 		return average;
 	}
 
-	public static void printTable(int[][] scoresArray, int[] total, int[] average, int numberOfStudents, int numberOfSubjects){
+	public static int[] getPosition(int[] total, int numberOfStudents, int numberOfSubjects){
+		int[] positions = new int[numberOfStudents];
+		
+		for (int index = 0; index < numberOfStudents; index++){
+			positions[index] = (numberOfStudents - index) / numberOfStudents;
+			for (int secondIndex = 0; secondIndex < numberOfSubjects; secondIndex++){
+				int highest = total[index];
+				if (total[index] > highest){
+					highest = total[index];
+					positions[index] = (numberOfStudents - index) / numberOfStudents;
+				} 
+				
+			}
+		}
+		
+		return positions;
+	}
+
+	public static void printTable(int[][] scoresArray, int[] total, int[] average, int numberOfStudents, int numberOfSubjects, int[] positions){
 		System.out.print("=====================================================================================\n");
 		System.out.print("STUDENT\t");
 		for (int secondIndex = 0; secondIndex < numberOfSubjects; secondIndex++){
@@ -83,21 +105,47 @@ public class StudentGrades{
 		System.out.print("TOT\tAVE\tPOS");
 		System.out.println();
 		System.out.print("=====================================================================================\n");
-
+		
 		for (int index = 0; index < numberOfStudents; index++){
 			System.out.print("Student " + (index+1)+" ");
 			for (int secondIndex = 0; secondIndex < numberOfSubjects; secondIndex++){
 				System.out.print(scoresArray[index][secondIndex]+"\t");
 			}
-			System.out.print(total[index] + "\t" + average[index]);
+			System.out.print(total[index] + "\t" + average[index]+"\t"+positions[index]);
 			System.out.println();
 			
 		}
-		
-		
+		System.out.print("=====================================================================================\n");
+		System.out.print("=====================================================================================\n");
+
+
 
 	}
 
+	public static int getHighestScorer(int[][] scoresArray, int numberOfStudents, int numberOfSubjects){
+		int highest = 0;
+		for (int index = 0; index < numberOfStudents; index++){
+			for (int secondIndex = 0; secondIndex < numberOfSubjects; secondIndex++){
+				highest = scoresArray[index][secondIndex];
+				if (scoresArray[index][secondIndex] > highest)
+					highest = scoresArray[index][secondIndex];
+			}
+		}
+		return highest;
+	}
 	
+	public static int getLowestScorer(int[][] scoresArray, int numberOfStudents, int numberOfSubjects){
+		int lowest = 0;
+		for (int index = 0; index < numberOfStudents; index++){
+			for (int secondIndex = 0; secondIndex < numberOfSubjects; secondIndex++){
+				lowest = scoresArray[index][secondIndex];
+				if (scoresArray[index][secondIndex] < lowest)
+					lowest = scoresArray[index][secondIndex];				
+			}
+		}
+		
+		return lowest;
+	}
+
 	
 }
