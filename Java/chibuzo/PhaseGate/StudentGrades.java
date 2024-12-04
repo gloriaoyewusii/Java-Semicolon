@@ -3,73 +3,67 @@ import java.util.Scanner;
 public class StudentGrades{
 
 	public static void main(String[] gloria){
-		
-		getScores();
-
-	}
-
-
-	public static int[][] getScores(){
 		Scanner input = new Scanner(System.in);
-		
 		System.out.println("How many students do you have?\n");
-
 		int numberOfStudents = input.nextInt();	
 
 		System.out.println("How many subjects do they offer?\n");
-
 		int numberOfSubjects = input.nextInt();	
 
 		String[] studentsArray = new String[numberOfStudents];
 		int[][] scoresArray = new int[studentsArray.length][numberOfSubjects];
+
 		
+		
+		getScores(numberOfStudents, numberOfSubjects, scoresArray, input);
+
+	}
+
+
+	public static int[][] getScores(int numberOfStudents,  int numberOfSubjects, int[][] scoresArray, Scanner input){
+		
+		//studentsArray = new String[numberOfStudents];
+		scoresArray = new int[numberOfStudents][numberOfSubjects];
+
 		
 		int[] total = new int[numberOfStudents];
 		int[] average = new int[numberOfStudents];
-
-		for (int index = 1; index <= studentsArray.length; index++){
+		
+		for (int index = 1; index <= numberOfStudents; index++){
 			for (int secondIndex = 1; secondIndex <= numberOfSubjects; secondIndex++){
+				System.out.print("Entering scores for student "+index+": ");
+				String studentName = input.nextLine();
 				
-				System.out.println("Entering scores for student "+index);
-				
-				String student = input.nextLine();
-				
-				System.out.println("Enter score for subject "+secondIndex);
-
+				System.out.print("Enter score for subject "+secondIndex+": ");
 				int studentScore = input.nextInt();
-			
+
+				//while (studentScore > 0 && <= 100){
 				scoresArray[index-1][secondIndex-1] = studentScore;
 
-				System.out.println("Saving >>>>>>>>>>>>>>>>>>>>>>>\n");
-				System.out.println("Saved successfully");
+				System.out.println("Saving >>>>>>>>>>>>>>>>>>>>>>>");
+				System.out.println("Saved successfully\n");
 
 				total[index-1] += scoresArray[index-1][secondIndex-1];
 				average[index-1] = total[index-1]/numberOfSubjects;
-				
-				System.out.println("========================================================");
+
+				int highest = scoresArray[index-1][secondIndex-1];
+				if (scoresArray[index-1][secondIndex-1] > highest){
+					highest = scoresArray[index-1][secondIndex-1];
+				}
+				int lowest = scoresArray[index-1][secondIndex-1];
+				if (scoresArray[index-1][secondIndex-1] < lowest){
+					lowest = scoresArray[index-1][secondIndex-1];
+				}
 			
-				System.out.print("STUDENT\t\tSUB1\tSUB2\tSUB3\tTOT\tAVE\tPOS\n");
-
-			System.out.println("Student "+index+"\t"+scoresArray[index-1][secondIndex-1]+"\t");
-
-
-
-
-			int highest = average[index-1];
-			if (average[index-1] > highest)
-				highest = average[index-1];
-			
-			
-			}
-
-			
-			
+		//System.out.print("Highest scoring student is: Student "+index+" scoring "+highest);
 					
-		}
-		
+			}
+		}		
 	
-		return scoresArray;
-	
+		return scoresArray;	
 	}
+
+	
+			
 
 }
