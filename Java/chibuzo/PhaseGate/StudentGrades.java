@@ -16,10 +16,13 @@ public class StudentGrades{
 		int[] total = getTotal(scoresArray, numberOfStudents, numberOfSubjects);
 		int[] average = getAverage(total, numberOfStudents, numberOfSubjects);
 		int[] positions = getPosition(total, numberOfStudents, numberOfSubjects);
-		int highest =  getHighestScorer(scoresArray, numberOfStudents, numberOfSubjects);
-		int lowest =  getHighestScorer(scoresArray, numberOfStudents, numberOfSubjects);
-
+		//int highest =  getHighestScorer(scoresArray, numberOfStudents, numberOfSubjects);
+		//int lowest =  getHighestScorer(scoresArray, numberOfStudents, numberOfSubjects);
+		
+		
 		printTable(scoresArray, total, average, numberOfStudents, numberOfSubjects, positions);
+		int highest = getSubjectSummary(scoresArray, numberOfStudents, numberOfSubjects);
+
 		
 
 	}
@@ -88,8 +91,9 @@ public class StudentGrades{
 				if (total[index] > highest){
 					highest = total[index];
 					positions[index] = (numberOfStudents - index) / numberOfStudents;
-				} 
-				
+				} else {
+					positions[index] = (numberOfStudents -(index + 1)) / numberOfStudents;
+				}
 			}
 		}
 		
@@ -122,30 +126,21 @@ public class StudentGrades{
 
 	}
 
-	public static int getHighestScorer(int[][] scoresArray, int numberOfStudents, int numberOfSubjects){
+	public static int getSubjectSummary(int[][] scoresArray, int numberOfStudents, int numberOfSubjects){
 		int highest = 0;
+		System.out.print("SUBJECT SUMMARY\n");
 		for (int index = 0; index < numberOfStudents; index++){
 			for (int secondIndex = 0; secondIndex < numberOfSubjects; secondIndex++){
+				System.out.print("Subject " + (secondIndex + 1));
 				highest = scoresArray[index][secondIndex];
 				if (scoresArray[index][secondIndex] > highest)
-					highest = scoresArray[index][secondIndex];
+					highest = scoresArray[index][secondIndex];		
 			}
-		}
-		return highest;
-	}
-	
-	public static int getLowestScorer(int[][] scoresArray, int numberOfStudents, int numberOfSubjects){
-		int lowest = 0;
-		for (int index = 0; index < numberOfStudents; index++){
-			for (int secondIndex = 0; secondIndex < numberOfSubjects; secondIndex++){
-				lowest = scoresArray[index][secondIndex];
-				if (scoresArray[index][secondIndex] < lowest)
-					lowest = scoresArray[index][secondIndex];				
-			}
+			System.out.print("Highest scoring student is: Student "+index+"scoring "+highest);		
 		}
 		
-		return lowest;
+		return highest;
 	}
 
-	
+
 }
