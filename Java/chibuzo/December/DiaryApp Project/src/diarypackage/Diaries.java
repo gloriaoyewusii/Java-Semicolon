@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Diaries {
-    private List<Diary> diaries = new ArrayList<>();
+    private final List<Diary> diaries = new ArrayList<>();
+
 
     public Diaries() {
     }
@@ -12,23 +13,19 @@ public class Diaries {
         return diaries.size();
     }
     public void add(String username, String password) {
-        diaries.add(new Diary(username, password));
-    }
-
-    public String getUsername() {
-        return diaries.get(checkSize() - 1).getUsername();
-    }
-    public String getPassword() {
-        return diaries.get(checkSize() - 1).getPassword();
+        Diary diary = new Diary(username, password);
+        diaries.add(diary);
     }
 
     public Diary findDiaryBy(String username) {
-        if (username==null){
-            username = diaries.get(checkSize() - 1).getUsername();
+        for (Diary diary : diaries) {
+            if (diary == null || username==null || username.isEmpty()) {
+                throw new IllegalArgumentException("Diary not found");
+            } else if (diary.getUsername().equals(username)) {
+                return diary;
+            }
         }
-        boolean usernameIsCorrect = username.equals(getUsername());
-        if (usernameIsCorrect) return diaries.get(checkSize() - 1);
-        else return null;
+         throw new IllegalArgumentException("Diary not found");
     }
 
     @Override
@@ -37,22 +34,29 @@ public class Diaries {
     }
 
     public void delete(String username, String password) {
-        validateUsername(username);
-        validatePassword(password);
-        diaries.remove(findDiaryBy(username));
-    }
-
-    private void validatePassword(String password) {
-        boolean passwordIsCorrect = password.equals(getPassword());
-        if (!passwordIsCorrect) {
-            throw new IllegalArgumentException("Passwords do not match");
+        for (Diary diary : diaries) {
+            if (findDiaryBy(username).getPassword().equals(password)) {
+                diaries.remove(diary);
+            }
         }
     }
 
-    private void validateUsername(String username) {
-        boolean usernameIsCorrect = username.equals(getUsername());
-        if (!usernameIsCorrect) {
-            throw new IllegalArgumentException("Username is not correct");
-        }
-    }
+//    private void validatePassword(String password) {
+//        for (Diary diary : diaries) {
+//            boolean passwordIsCorrect = password.equals(diary.getPassword());
+//            if (!passwordIsCorrect) {
+//                throw new IllegalArgumentException("Passwords do not match");
+//            }
+//        }
+//    }
+//
+//    private void validateUsername(String username) {
+//        for (Diary diary : diaries) {
+//            boolean usernameIsCorrect = username.equals(diary.getUsername());
+//            if (!usernameIsCorrect) {
+//                throw new IllegalArgumentException("Usernames do not match");
+//            }
+//        }
+//    }
+
 }

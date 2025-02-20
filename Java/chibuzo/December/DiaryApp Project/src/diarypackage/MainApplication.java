@@ -11,20 +11,23 @@ public class MainApplication {
     }
 
     public static void diaryMenu() {
-        print("Welcome!");
+        print("Welcome to Gloria's Diary Application!");
         print("""
+                Accounts Management System
                 1. Sign up for a new diary account.
-                2. Sign in to your account.
-                3. View your diary accounts.
-                4. Create a new entry.
-                5. Find your entry by id.
-                6. View your entries.
-                7. Switch diary accounts.
-                8. Delete your diary account.
-                9. Delete your entry.
-                10. Sign out of your account.
+                2. Sign in to an existing diary account.
+                Diary Management System
+                3. Find diary account by username.
+                4. View diary accounts you've signed up for.
+                5. Delete a diary account.
+                Entries Management System
+                6. Create a new entry.
+                7. Update an existing entry.
+                8. Find entry by ID.
+                9. Find all entries.
+                10. Delete entry by ID.
+                11. Sign out
                 """);
-
 
         String diaryChoice = input("Select an option: ");
         switch (diaryChoice){
@@ -35,39 +38,45 @@ public class MainApplication {
                 signIn();
                 break;
             case "3":
-                viewDiaries();
+                findDiaryByUsername();
                 break;
             case "4":
-                createEntry();
+                viewDiaries();
                 break;
             case "5":
-                viewEntries();
-            case "6":
-                switchDiaryAccounts();
+                deleteDiary();
                 break;
+            case "6":
+                createEntry();
+                break;
+            case "7":
+                updateEntry();
+                break;
+            case "8":
+                findEntryByID();
+                break;
+            case "9":
+                viewEntries();
+                break;
+            case "10":
+                deleteEntry();
             default:
                 signOut();
         }
     }
 
-    public static void switchDiaryAccounts(){
-        String userName = input("Enter your username: ");
-        if (userName.equals(diaries.getUsername()) && diaries.findDiaryBy(userName) != null){
-            print("You are already logged in!");
-            diaries.findDiaryBy(userName);
-            diaryMenu();
-        }
+
+
+    private static void deleteEntry() {
+        int entryID = Integer.parseInt(input("Enter entry ID: "));
+        diaries.findDiaryBy(username).deleteEntry(entryID);
+        print("Entry number " + entryID + " has successfully been deleted.");
         diaryMenu();
     }
-
     public static void viewEntries(){
 
         print(diaries.findDiaryBy(username).viewEntries().toString());
 
-
-//        int entryID = diaries.findDiaryBy(username).findEntry(entryId).getEntryID();
-//        boolean entryIsNull = diaries.findDiaryBy(username).findEntry(entryID) == null;
-//
 //
 //        if (diaries == null && entryIsNull){
 //            diaries = new Diaries();
@@ -80,6 +89,25 @@ public class MainApplication {
 //        }
         diaryMenu();
     }
+    private static void findEntryByID() {
+        int entryID = Integer.parseInt(input("Enter entry ID: "));
+        for (int index = 0; index < diaries.checkSize(); index++) {
+            Entry entry = diaries.findDiaryBy(username).findEntry(entryID);
+            if (entry != null) {
+                print("Found entry with ID: " + entryID);
+                print(entry.toString());
+            }
+        }
+        diaryMenu();
+    }
+
+    private static void updateEntry() {
+        int entryID = Integer.parseInt(input("Enter entry ID: "));
+        String title = input("Enter title: ");
+        String content = input("Enter content: ");
+        diaries.findDiaryBy(username).updateEntry(entryID, title, content);
+        diaryMenu();
+    }
     public static void createEntry(){
         int entryID = diaries.findDiaryBy(username).getId();
         String title = input("Enter your title: ");
@@ -88,7 +116,8 @@ public class MainApplication {
 
         if (username==null && diaries==null){
             diaries = new Diaries();
-            username = diaries.getUsername();
+            username = diaries.findDiaryBy(username).getUsername();
+//            username = diaries.getUsername();
             diaries.findDiaryBy(username).createEntry(title, content);
             diaries.findDiaryBy(username).getEntry().setEntryID(entryID);
         }
@@ -123,18 +152,28 @@ public class MainApplication {
 //        }
 
     }
-    public MainApplication(Diaries diaries, String username) {
-        this.diaries = diaries;
-        this.username = username;
-    }
 
     public static void signOut(){
         System.exit(0);
-
         diaryMenu();
+    }
+    private static void deleteDiary() {
+        if (diaries != null){
+            diaries.delete(username, diaries.findDiaryBy(username).getPassword());
+//            diaries.delete(username, diaries.getPassword());
+        }
+
     }
     public static void viewDiaries() {
         print(diaries.toString());
+        diaryMenu();
+    }
+    private static void findDiaryByUsername() {
+        String name = input("Enter your username: ");
+        if (name.equals(username)) {
+            Diary diary = diaries.findDiaryBy(username);
+            print(diary.toString());
+        }
         diaryMenu();
     }
     public static void signIn(){
@@ -147,6 +186,7 @@ public class MainApplication {
             print(exception.getMessage());
         }
         diaryMenu();
+
     }
 
     private static void validateDiary(String username, String password) {
@@ -165,18 +205,14 @@ public class MainApplication {
     }
     private static void validatePassword(String password) {
         boolean passwordIsCorrect = password != null && !password.isEmpty();
-        if (!passwordIsCorrect) {
+        if (!passwordIsCorrect)
             throw new IllegalArgumentException("Invalid password");
-        } else
-            print("Password correct!");
     }
 
     private static void validateUsername(String username) {
         boolean usernameIsCorrect = username != null && !username.isEmpty();
-        if (!usernameIsCorrect) {
+        if (!usernameIsCorrect)
             throw new IllegalArgumentException("Invalid username provided");
-        } else
-            print("Username correct!");
     }
 
     public static void signUp() {
@@ -194,10 +230,13 @@ public class MainApplication {
         validateUserDetails(username, password);
         if (diaries==null) diaries = new Diaries();
         diaries.add(diary.getUsername(), diary.getPassword());
-
-        diaryMenu();
+        print("Diary created successfully!");
+        signIn();
     }
-
+    public MainApplication(Diaries diaries, String username) {
+        MainApplication.diaries = diaries;
+        MainApplication.username = username;
+    }
     private static String input(String prompt){
         Scanner scanner = new Scanner(System.in);
         print(prompt);

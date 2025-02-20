@@ -75,8 +75,8 @@ public class Diary {
         try{
             entries.remove(id-1);
             entryCount--;
-            if (entryCount == 1) System.out.println(entryCount + " entry deleted");
-            else System.out.println(entryCount + " entries deleted");
+//            if (entryCount == 1) System.out.println(entryCount + " entry deleted");
+//            else System.out.println(entryCount + " entries deleted");
             System.out.println(getEntry());
         } catch (NullPointerException exception){
             exception.getMessage();
@@ -88,7 +88,7 @@ public class Diary {
         try {
             for (Entry entry : entries) {
                 if (id > 0) {
-                    entry = entries.get(entryCount - 1);
+                    entry = entries.get(id-1);
                 }
                 return entry;
             }
@@ -144,4 +144,14 @@ public class Diary {
     public List<Entry> viewEntries() {
         return entries;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Diary diary) {
+            
+            return userName.equals(diary.userName) && password.equals(diary.password);
+        }
+        return false;
+    }
+
 }
